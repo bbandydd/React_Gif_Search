@@ -9,7 +9,7 @@ export default class SearchBar extends Component {
     render() {
         return (
             <div>
-                <input className='search' type="text" onChange={ this.onInputChange.bind(this) }/>
+                <input placeholder='Enter text to search for gifs!' className='search' type="text" onChange={ this.onInputChange.bind(this) }/>
             </div>
         )
     }

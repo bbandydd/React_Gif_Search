@@ -3,6 +3,7 @@ import request from 'superagent'
 
 import SearchBar from './components/SearchBar'
 import GifList from './components/GifList'
+import GifModal from './components/GifModal'
 
 import './styles/app.css'
 
@@ -20,9 +21,31 @@ export default class App extends Component {
         return (
             <div>
                 <SearchBar onTermChange={ this.handleTermChange.bind(this) }/>
-                <GifList gifs={ this.state.gifs } />
+                <GifList
+                    gifs={ this.state.gifs }
+                    onGifSelect={ (selectedGif) => this.openModal(selectedGif) }
+                />
+                <GifModal
+                    modalIsOpen={ this.state.modalIsOpen }
+                    selectedGif={ this.state.selectedGif }
+                    onRequestClose={ () => this.closeModal() }
+                />
             </div>
         )
+    }
+
+    openModal(gif) {
+        this.setState({
+            modalIsOpen: true,
+            selectedGif: gif
+        })
+    }
+
+    closeModal() {
+        this.setState({
+            modalIsOpen: false,
+            selectedGif: null
+        })
     }
 
     handleTermChange(term) {
