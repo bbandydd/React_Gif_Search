@@ -8,8 +8,8 @@ export default class SearchBar extends Component {
 
     render() {
         return (
-            <div className='search'>
-                <input type="text" onChange={ this.onInputChange.bind(this) }/>
+            <div>
+                <input className='search' type="text" onChange={ this.onInputChange.bind(this) }/>
             </div>
         )
     }
